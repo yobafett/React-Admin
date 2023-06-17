@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import PostList from './components/PostList/PostList';
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -14,9 +16,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className='ItemsList'>
-        <PostList posts={posts} />
-      </div>
+      <Container fluid>
+        <Row>
+          <NavBar />
+        </Row>
+        <Row>
+          <Col>
+            <PostList posts={posts} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
