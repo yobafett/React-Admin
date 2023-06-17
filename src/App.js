@@ -1,41 +1,21 @@
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+import PostList from './components/PostList/PostList';
 import './App.css';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 function App() {
-  const [list, setList] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/posts')
-      .then(function (response) {
-        console.log(response.data);
-        setList(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-      });
+      .then(response => setPosts(response.data))
+      .catch(error => console.error(error));
   }, []);
-
-  const listContent = list.map(item => {
-    return (
-      <li key={item.id}>
-        author_id: {item.author_id}<br/>
-        created: {item.created}<br/>
-        description: {item.description}<br/>
-        text: {item.text}<br/>
-        title: {item.title}<br/>
-        updated: {item.updated}<br/>
-      </li>
-    )
-  });
 
   return (
     <div className="App">
       <div className='ItemsList'>
-        <ul>{listContent}</ul>
+        <PostList posts={posts} />
       </div>
     </div>
   );
