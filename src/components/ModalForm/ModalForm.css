@@ -1,0 +1,16 @@
+.modal-content {
+    background-color: #282a36;
+    color: whitesmoke;
+}
+
+input.form-control,
+textarea.form-control {
+    background-color: #2c3034;
+    border-color: #373b3e;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+    background-color: #212529;
+    border-color: #373b3e;
+}
